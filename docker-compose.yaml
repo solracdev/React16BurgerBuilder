@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+
+  react-app:
+    container_name: react-16
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - localhost  
+
+networks: 
+  localhost:
+   name: my-internal-net      
